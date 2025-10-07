@@ -16,7 +16,7 @@ func main() {
 
 	err := http.ListenAndServe(":8080", mux)
 	if err != nil {
-		fmt.Println(" Unfortunately Error Occurs", err)
+		fmt.Println("Unfortunately Error Occurs", err)
 	}
 
 }
