@@ -9,11 +9,7 @@ import (
 )
 
 func CreateJWT(w http.ResponseWriter, r *http.Request) {
-
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET")
-
+	ManageCors(w)
 	if r.Method != "POST" {
 		http.Error(w, "Post Method Accepted Only", http.StatusMethodNotAllowed)
 		return
