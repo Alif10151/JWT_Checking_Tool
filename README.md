@@ -1,5 +1,3 @@
-# JWT_Checking_Tool
-
 # JWT Checking Tool 🔐
 
 ## 🚀 A simple and efficient tool to decode, verify, and validate JSON Web Tokens (JWT) built with Go and HTML.
