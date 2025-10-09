@@ -9,14 +9,11 @@ import (
 )
 
 func CreateJWT(w http.ResponseWriter, r *http.Request) {
-	ManageCors(w)
-	if r.Method != "POST" {
-		http.Error(w, "Post Method Accepted Only", http.StatusMethodNotAllowed)
+	if stop := ManageCors(w, r); stop {
 		return
 	}
-
-	if r.Method == "OPTIONS" {
-		w.WriteHeader(http.StatusOK)
+	if r.Method != "POST" {
+		http.Error(w, "Post Method Accepted Only", http.StatusMethodNotAllowed)
 		return
 	}
 
@@ -68,7 +65,24 @@ func CreateJWT(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	_, sigErr := utility.DecodeB64Url(parts[2])
+	if sigErr != nil {
+		response := skeletons.ReturnResponse{
+			ValidSignature: false,
+			Error:          []string{"Error In Signature Decode"}}
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
 	valid := utility.VerifyHS(parts[0], parts[1], parts[2], []byte(req.Secret))
+
+	if !valid {
+		response := skeletons.ReturnResponse{
+			ValidSignature: false,
+			Error:          []string{"Signature or secret key does not match"}}
+		json.NewEncoder(w).Encode(response)
+		return
+	}
 
 	response := skeletons.ReturnResponse{
 		Header:         headerBytes,

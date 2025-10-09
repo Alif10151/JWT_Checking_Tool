@@ -8,7 +8,7 @@ import (
 
 func main() {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/decode", handlers.CreateJWT)
+	mux.HandleFunc("/createjwt", handlers.CreateJWT)
 	fmt.Println("Server is running on :8080")
 
 	err := http.ListenAndServe(":8080", mux)
