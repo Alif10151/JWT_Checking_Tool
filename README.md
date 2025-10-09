@@ -71,7 +71,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Alif**
 
-- GitHub: [@YOUR_USERNAME](https://github.com/Alif10151)
+- GitHub: [@https://github.com/Alif10151](https://github.com/Alif10151)
 
 ## ⭐ Show your support
 
@@ -79,4 +79,4 @@ Give a ⭐️ if this project helped you!
 
 ---
 
-🎨 Made by [Alif]
+🎨 Made by Alif
