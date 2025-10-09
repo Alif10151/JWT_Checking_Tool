@@ -1,0 +1,12 @@
+# Mark HTML files as documentation/vendored so they don't count toward language stats
+*.html linguist-documentation
+*.css linguist-documentation
+*.js linguist-documentation
+
+# Optionally, you can also use linguist-vendored
+# *.html linguist-vendored
+# *.css linguist-vendored
+# *.js linguist-vendored
+
+# Ensure Go files are properly detected
+*.go linguist-language=Go
